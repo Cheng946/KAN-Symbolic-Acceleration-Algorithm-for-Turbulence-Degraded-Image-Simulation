@@ -15,7 +15,7 @@ torch==1.13.1+cu116
 numpy==1.26.4
 
 ### 硬件要求
-- NVIDIA GPU A40
+- NVIDIA GPU A40 ×2 
 - CUDA ≥11.6
 
 ### 依赖安装
