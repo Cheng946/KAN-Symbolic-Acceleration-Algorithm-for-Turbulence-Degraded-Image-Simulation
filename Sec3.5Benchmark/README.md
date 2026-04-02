@@ -8,5 +8,6 @@ This folder contains the code and experimental settings for **Section 3.5** of t
 - Fitting accuracy comparison of various models (Table 5)
 
 ## Structure
-torchrun MyKANTrain.py
-torchrun Test_MSE.py
+torchrun --nproc_per_node=2 MyKANTrain.py
+
+torchrun --nproc_per_node=2 Test_MSE.py
