@@ -10,6 +10,9 @@ This folder contains the code and experimental settings for **Section 3.4** of t
 
 ## Usage
 torchrun SymbolicKAN_Finetune.py
+
 python SymbolicKAN_LayerWeightAnalysis.py
+
 torchrun SymbolicKAN_grad.py
+
 python SymbolicKAN_Equation_Prune.py
