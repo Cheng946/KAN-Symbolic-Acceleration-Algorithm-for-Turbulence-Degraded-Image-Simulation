@@ -5,7 +5,8 @@ This folder contains the code and experimental settings for **Section 3.1** of t
 
 ## Content
 - Generate Dataset
-- Dataset K-means Visualization
+- Dataset K-means Visualization (K_means_Cluster.pdf)
 
 ## Usage
 python CreatDataset.py
+python CreatDataset_K-means.py
