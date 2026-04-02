@@ -9,10 +9,10 @@ This folder contains the code and experimental settings for **Section 3.4** of t
 - The test set Lfit of symbolic expressions with different numbers of cl,i,j and wl,i,j b in each layer (Table 4)
 
 ## Usage
-torchrun SymbolicKAN_Finetune.py
+torchrun --nproc_per_node=2 SymbolicKAN_Finetune.py
 
 python SymbolicKAN_LayerWeightAnalysis.py
 
-torchrun SymbolicKAN_grad.py
+torchrun --nproc_per_node=2 SymbolicKAN_grad.py
 
 python SymbolicKAN_Equation_Prune.py
