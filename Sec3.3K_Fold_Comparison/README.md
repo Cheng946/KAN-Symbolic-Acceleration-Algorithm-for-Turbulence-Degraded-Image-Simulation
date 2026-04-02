@@ -8,6 +8,6 @@ This folder contains the code and experimental settings for **Section 3.3** of t
 - Pruning Analysis
 
 ## Usage
-torchrun MyKANTrain.py
+torchrun --nproc_per_node=2 MyKANTrain.py
 
-torchrun PruneKAN.py
+torchrun --nproc_per_node=2 PruneKAN.py
