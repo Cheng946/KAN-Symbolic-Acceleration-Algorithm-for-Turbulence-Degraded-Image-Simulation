@@ -9,7 +9,11 @@ effects. Experimental results demonstrate that KAN outperforms various benchmark
 - Core module：KAN
 - Input/Output Dimensions：33，70
 
-## 环境配置
+## 环境配置,Environment Setup
+### 软件要求, Software Requirements
+torch==1.13.1+cu116
+numpy==1.26.4
+
 ### 硬件要求
 - NVIDIA GPU A40
 - CUDA ≥11.6
@@ -18,4 +22,4 @@ effects. Experimental results demonstrate that KAN outperforms various benchmark
 ```bash
 conda create -n [env_name] python=3.10.10
 conda activate [env_name]
-pip install -r requirements.txt
+pip install -r requirements.txt -f https://download.pytorch.org/whl/cu116/torch_stable.html
