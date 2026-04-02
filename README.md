@@ -5,7 +5,7 @@ Current simulations of image degradation caused by atmospheric turbulence strugg
 effects. Experimental results demonstrate that KAN outperforms various benchmark neural networks in fitting accuracy given the same parameter budget. Furthermore, compared with traditional phase screen segmentation and Zernike polynomial-based algorithms, the proposed method achieves speedup factors of 42.61 and 5.89, respectively. These findings confirm that KAN, as an interpretable acceleration framework, possesses significant potential for advancing turbulence-degraded imaging tasks. 
 
 **Model Architecture**：
-- Backbone Network： Kolmogo-rov-Arnold Network
+- Backbone Network： Kolmogorov-Arnold Network
 - Core module：KAN
 - Input/Output Dimensions：33，70
 
