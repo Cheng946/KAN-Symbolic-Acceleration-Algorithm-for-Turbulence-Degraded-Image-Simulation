@@ -1,11 +1,11 @@
 # Acceleration Algorithm Simulation for Atmospheric Turbulence Degraded Remote Sensing Images Based on Kolmogorov-Arnold Network
 
 ## Paper Overview
-In the process of acquiring images from spaceborne and airborne remote sensing platforms, image degradation caused by atmospheric turbulence seriously restricts the efficient processing and application of remote sensing data. Aiming at the current challenge that atmospheric turbulence degraded image simulation struggles to meet the processing efficiency requirements of modern large-scale remote sensing datasets, this paper applies Principal Component Analysis (PCA), Kolmogorov-Arnold Net-work (KAN), and Feature-wise Linear Modulation (FiLM) structures to simulation computations, proposing an accelerated algorithm for atmospheric turbulence degra-dation simulation specifically designed for remote sensing images. Experimental re-sults demonstrate that the algorithm achieves an average processing time of 3.08 sec-onds per remote sensing image, significantly outperforming the traditional phase screen segmentation algorithm (131.23 seconds per image) and the Zernike polynomi-als algorithm (18.14 seconds per image). The computational efficiency of the proposed method is 42.61 times and 5.89 times that of the traditional methods, respectively. While accelerating the algorithm, it introduces only a 0.96% mean absolute percentage error. This algorithm provides an efficient atmospheric turbulence degradation simu-lation scheme for the preprocessing of remote sensing images, contributing to im-proving the processing quality and efficiency of remote sensing images in geometric reconstruction, data fusion, and other remote sensing applications.
-
+Current simulations of image degradation caused by atmospheric turbulence struggle to meet the efficiency demands of large-scale datasets. This paper proposes an accelerated simulation algorithm by integrating Principal Component Analysis (PCA) and the Kolmogorov-Arnold Network (KAN). Unlike black-box models, KAN offers an interpretable physical mechanism through its learnable spline activation functions and symbolic computation capabilities. Leveraging its compact architecture, KAN expresses the degradation mapping as a closed-form function of individual Zernike coefficients. This enables an in-depth interpretable analysis of key phenomena, such as the dominance of low-order aberrations and local control
+effects. Experimental results demonstrate that KAN outperforms various benchmark neural networks in fitting accuracy given the same parameter budget. Furthermore, compared with traditional phase screen segmentation and Zernike polynomial-based algorithms, the proposed method achieves speedup factors of 42.61 and 5.89, respectively. These findings confirm that KAN, as an interpretable acceleration framework, possesses significant potential for advancing turbulence-degraded imaging tasks. 
 **Model Architecture**：
-- Backbone Network： Kolmogo-rov-Arnold Network+FiLM
-- Core module：KANLinear、b_splines、FilM
+- Backbone Network： Kolmogo-rov-Arnold Network
+- Core module：KAN
 - Input/Output Dimensions：33，70
 
 ## 环境配置
