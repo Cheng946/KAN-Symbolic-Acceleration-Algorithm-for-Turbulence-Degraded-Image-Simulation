@@ -1,0 +1,14 @@
+# 论文实验专用环境
+torch==1.13.1+cu116
+torchvision==0.14.1+cu116
+torchaudio==0.13.1+cu116
+numpy==1.26.4
+
+# 常用基础库（论文代码必备，不冲突）
+scipy>=1.10.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+Pillow>=9.0.0
+tqdm>=4.65.0
+scikit-learn>=1.2.0
+pyyaml>=6.0
