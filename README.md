@@ -1,4 +1,4 @@
-# Acceleration Algorithm Simulation for Atmospheric Turbulence Degraded Remote Sensing Images Based on Kolmogorov-Arnold Network
+# Accelerated Simulation of Atmospheric Turbulence-Degraded Images via Interpretable Kolmogorov-Arnold Networks
 
 ## Paper Overview
 Current simulations of image degradation caused by atmospheric turbulence struggle to meet the efficiency demands of large-scale datasets. This paper proposes an accelerated simulation algorithm by integrating Principal Component Analysis (PCA) and the Kolmogorov-Arnold Network (KAN). Unlike black-box models, KAN offers an interpretable physical mechanism through its learnable spline activation functions and symbolic computation capabilities. Leveraging its compact architecture, KAN expresses the degradation mapping as a closed-form function of individual Zernike coefficients. This enables an in-depth interpretable analysis of key phenomena, such as the dominance of low-order aberrations and local control
