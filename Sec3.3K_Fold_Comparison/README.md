@@ -1,6 +1,6 @@
 # Section 3.3: K-Fold Comparison and Pruning Results
 
-This folder contains the code and experimental settings for **Section 3.1** of the paper:
+This folder contains the code and experimental settings for **Section 3.3** of the paper:
 > Accelerated Simulation of Atmospheric Turbulence-Degraded Images via Interpretable Kolmogorov-Arnold Networks
 
 ## Content
