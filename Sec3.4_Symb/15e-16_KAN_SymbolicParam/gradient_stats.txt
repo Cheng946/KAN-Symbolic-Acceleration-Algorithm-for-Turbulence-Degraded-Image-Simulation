@@ -1,0 +1,5 @@
+sample_count: 500000
+mean_gradient_magnitude: 0.15079742670059204
+max_gradient_magnitude: 1.3905467987060547
+min_gradient_magnitude: 0.03594261407852173
+std_gradient_magnitude: 0.12321116775274277

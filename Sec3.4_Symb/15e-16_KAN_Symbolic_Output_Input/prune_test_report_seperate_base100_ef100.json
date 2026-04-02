@@ -1,0 +1,26 @@
+{
+    "prune_config": {
+        "topk_base": 100,
+        "topk_ef": 100
+    },
+    "original_model": {
+        "total_params": 4231744,
+        "non_zero": 4161017,
+        "loss": 0.091131,
+        "max_error_dim": 62,
+        "max_error_value": 0.102765,
+        "max_dim_loss_ratio%": 112.77
+    },
+    "pruned_model": {
+        "non_zero": 912993,
+        "compress_rate": 0.7806,
+        "loss": 0.326566,
+        "loss_change%": 258.35,
+        "max_error_dim": 0,
+        "max_error_value": 0.589414,
+        "max_dim_loss_ratio%": 180.49
+    },
+    "inference": {
+        "avg_batch_time": 0.006762
+    }
+}
