@@ -1,0 +1,164 @@
+{
+    "global_threshold": 0.005,
+    "prune_target": "all",
+    "layer_thresholds": {},
+    "pruned_info": [
+        {
+            "layer_name": "layers.0",
+            "param_name": "spline_weight",
+            "shape": [
+                524,
+                33,
+                17
+            ],
+            "threshold": 0.005,
+            "pruned_params": 1666,
+            "total_params": 293964,
+            "prune_ratio": 0.00566736062919269
+        },
+        {
+            "layer_name": "layers.0",
+            "param_name": "base_weight",
+            "shape": [
+                524,
+                33
+            ],
+            "threshold": 0.005,
+            "pruned_params": 585,
+            "total_params": 17292,
+            "prune_ratio": 0.03383067314365024
+        },
+        {
+            "layer_name": "layers.0",
+            "param_name": "spline_scaler",
+            "shape": [
+                524,
+                33
+            ],
+            "threshold": 0.005,
+            "pruned_params": 1408,
+            "total_params": 17292,
+            "prune_ratio": 0.08142493638676845
+        },
+        {
+            "layer_name": "layers.1",
+            "param_name": "spline_weight",
+            "shape": [
+                524,
+                524,
+                17
+            ],
+            "threshold": 0.005,
+            "pruned_params": 119680,
+            "total_params": 4667792,
+            "prune_ratio": 0.025639531495833576
+        },
+        {
+            "layer_name": "layers.1",
+            "param_name": "base_weight",
+            "shape": [
+                524,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 30971,
+            "total_params": 274576,
+            "prune_ratio": 0.11279572868713944
+        },
+        {
+            "layer_name": "layers.1",
+            "param_name": "spline_scaler",
+            "shape": [
+                524,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 21805,
+            "total_params": 274576,
+            "prune_ratio": 0.07941335003787658
+        },
+        {
+            "layer_name": "layers.2",
+            "param_name": "spline_weight",
+            "shape": [
+                524,
+                524,
+                17
+            ],
+            "threshold": 0.005,
+            "pruned_params": 113118,
+            "total_params": 4667792,
+            "prune_ratio": 0.02423372763824952
+        },
+        {
+            "layer_name": "layers.2",
+            "param_name": "base_weight",
+            "shape": [
+                524,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 34972,
+            "total_params": 274576,
+            "prune_ratio": 0.12736728628867783
+        },
+        {
+            "layer_name": "layers.2",
+            "param_name": "spline_scaler",
+            "shape": [
+                524,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 8812,
+            "total_params": 274576,
+            "prune_ratio": 0.032093118116659866
+        },
+        {
+            "layer_name": "layers.3",
+            "param_name": "spline_weight",
+            "shape": [
+                70,
+                524,
+                17
+            ],
+            "threshold": 0.005,
+            "pruned_params": 1564,
+            "total_params": 623560,
+            "prune_ratio": 0.0025081788440567067
+        },
+        {
+            "layer_name": "layers.3",
+            "param_name": "base_weight",
+            "shape": [
+                70,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 3849,
+            "total_params": 36680,
+            "prune_ratio": 0.10493456924754635
+        },
+        {
+            "layer_name": "layers.3",
+            "param_name": "spline_scaler",
+            "shape": [
+                70,
+                524
+            ],
+            "threshold": 0.005,
+            "pruned_params": 102,
+            "total_params": 36680,
+            "prune_ratio": 0.0027808069792802617
+        }
+    ],
+    "total_pruned_params": 338532,
+    "total_target_params": 11459356,
+    "overall_prune_ratio": 0.02954197426103177,
+    "loss_metrics": {
+        "original_l1_loss": 0.03990409647011757,
+        "pruned_l1_loss": 0.05945013335609436,
+        "loss_change_absolute": 0.019546036885976788,
+        "loss_change_percentage": 48.982532158356115
+    }
+}
