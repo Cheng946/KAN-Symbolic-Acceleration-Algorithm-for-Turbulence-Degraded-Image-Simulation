@@ -17,3 +17,5 @@ python SymbolicKAN_LayerWeightAnalysis.py
 torchrun --nproc_per_node=2 SymbolicKAN_grad.py
 
 python SymbolicKAN_Equation_Prune.py
+
+python SymbolicKAN_Equation.py
