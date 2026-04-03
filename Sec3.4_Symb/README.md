@@ -7,6 +7,7 @@ This folder contains the code and experimental settings for **Section 3.4** of t
 - Weight distribution of elementary functions in the symbolic network (Table 2, Figure 2)
 - Most significant input variables and their gradient rankings (Table 3)
 - The test set Lfit of symbolic expressions with different numbers of cl,i,j and wl,i,j b in each layer (Table 4)
+- Symbolic network outputs closed-form expressions
 
 ## Usage
 torchrun --nproc_per_node=2 SymbolicKAN_Finetune.py
