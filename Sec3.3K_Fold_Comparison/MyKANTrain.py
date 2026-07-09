@@ -7,7 +7,7 @@ import Attention_Model as Attention
 import ResFC_Model as ResFC
 import torch
 import torch.nn as nn
-import MyKANnetLoader  # 适配HDF5和分布式的数据集加载器
+import MyKANnetLoader_2  # 适配HDF5和分布式的数据集加载器
 import argparse
 import time
 import numpy as np
@@ -331,7 +331,7 @@ def main():
         print(f"模型总参数: {sum(p.numel() for p in net.parameters())}")
 
     # 返回的是三个数据加载器
-    train_iter, test_iter, val_iter = MyKANnetLoader.load_dataset(opt)
+    train_iter, val_iter, test_iter = MyKANnetLoader.load_dataset(opt)
 
     # 定义损失函数和优化器（移动到设备）
     criterion = torch.nn.L1Loss().to(device)
