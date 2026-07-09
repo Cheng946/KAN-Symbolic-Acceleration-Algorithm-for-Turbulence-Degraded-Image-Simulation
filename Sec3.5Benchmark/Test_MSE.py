@@ -7,7 +7,7 @@ from SymbolicKAN_Finetune import SymbolicKAN,DEFAULT_ELEMENTARY_FUNCTIONS
 
 import torch
 import torch.nn as nn
-import MyKANnetLoader
+import MyKANnetLoader_2
 import argparse
 import functools
 import time
@@ -182,6 +182,30 @@ parser.add_argument('--num_epochs', type=int, default=300, help='训练的轮数
 
 # # 保存路径（确保主进程有写入权限）
 # parser.add_argument('--SaveTrainLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-1128-1128-1128.txt")
+# parser.add_argument('--SaveValLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-1128-1128-1128.txt")
+# parser.add_argument('--SavePara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-1128-1128-1128.pt")
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-1128-1128-11284.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/test_metrics_1_fold-1128-1128-1128.txt")
+
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--SaveTrainLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-1500-1500-1500.txt")
+# parser.add_argument('--SaveValLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-1500-1500-1500.txt")
+# parser.add_argument('--SavePara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-1500-1500-1500.pt")
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-1500-1500-1500.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/test_metrics_1_fold-1500-1500-1500.txt")
+
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--SaveTrainLossPath', type=str,
 #                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_train_loss_1_fold-524-524-524_15_2.txt")
 # parser.add_argument('--SaveValLossPath', type=str,
 #                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_val_loss_1_fold-524-524-524_15_2.txt")
@@ -193,12 +217,54 @@ parser.add_argument('--num_epochs', type=int, default=300, help='训练的轮数
 #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/test_metrics_1_fold-524-524-524_15_2.txt",
 #                     help='测试集指标保存路径')
 
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--SaveTrainLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_train_loss_1_fold-1075-1075-1075_15_2.txt")
+# parser.add_argument('--SaveValLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_val_loss_1_fold-1075-1075-1075_15_2.txt")
+# parser.add_argument('--SavePara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/Kan_Para_1_fold-1075-1075-1075_15_2.pt")
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/Last_Kan_Para_1_fold-1075-1075-1075_15_2.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/test_metrics_1_fold-1075-1075-1075_15_2.txt",
+#                     help='测试集指标保存路径')
+
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--SaveTrainLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_train_loss_1_fold-1437-1437-1437_15_2.txt")
+# parser.add_argument('--SaveValLossPath', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/record_val_loss_1_fold-1437-1437-1437_15_2.txt")
+# parser.add_argument('--SavePara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/Kan_Para_1_fold-1437-1437-1437_15_2.pt")
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/Last_Kan_Para_1_fold-1437-1437-1437_15_2.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN4LayerParam/test_metrics_1_fold-1437-1437-1437_15_2.txt",
+#                     help='测试集指标保存路径')
+
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--elementary_functions', type=str, nargs='+', default=DEFAULT_ELEMENTARY_FUNCTIONS)
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_1_fold_4L_-524-524-524_15_2.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/test_metrics_1_fold-524-524-524_15_2.txt",
+#                     help='测试集指标保存路径')
+
+# # 保存路径（确保主进程有写入权限）
+# parser.add_argument('--elementary_functions', type=str, nargs='+', default=DEFAULT_ELEMENTARY_FUNCTIONS)
+# parser.add_argument('--SaveLastPara', type=str,
+#                         default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_1_fold_4L_-1075-1075-1075_15_2.pt")
+# parser.add_argument('--SaveMetricsPath', type=str,
+#                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/test_metrics_1_fold-1075-1075-1075_15_2.txt",
+#                     help='测试集指标保存路径')
+
 # 保存路径（确保主进程有写入权限）
 parser.add_argument('--elementary_functions', type=str, nargs='+', default=DEFAULT_ELEMENTARY_FUNCTIONS)
 parser.add_argument('--SaveLastPara', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_1_fold_4L_-524-524-524_15_2.pt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_1_fold_4L_-1437-1437-1437_15_2.pt")
 parser.add_argument('--SaveMetricsPath', type=str,
-                    default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/test_metrics_1_fold-524-524-524_15_2.txt",
+                    default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/test_metrics_1_fold-1437-1437-1437_15_2.txt",
                     help='测试集指标保存路径')
 
 parser.add_argument('--num_print', type=int, default=10, help='每过num_print轮训练打印一次损失')
@@ -340,8 +406,14 @@ if __name__ == '__main__':
     # net = Siren.Siren([opt.input_nc, 2375, 2375, 2375, opt.output_nc], omega_0=15)
     # net = Attention.Attention([opt.input_nc, 524, 524, 524, opt.output_nc], heads=4, dropout=0.0)
     # net = Attention.Attention([opt.input_nc, 564, 564, 564, opt.output_nc], heads=4, dropout=0.0)
+    # net = Attention.Attention([opt.input_nc, 1128, 1128, 1128, opt.output_nc], heads=4, dropout=0.0)
+    # net = Attention.Attention([opt.input_nc, 1500, 1500, 1500, opt.output_nc], heads=4, dropout=0.0)
     # net = E_kan.KAN([opt.input_nc, 524, 524, 524, opt.output_nc], grid_size=15, spline_order=2)
-    net = SymbolicKAN(layers_hidden=[opt.input_nc, 524, 524, 524, opt.output_nc], elementary_functions=opt.elementary_functions)
+    # net = E_kan.KAN([opt.input_nc, 1075, 1075, 1075, opt.output_nc], grid_size=15, spline_order=2)
+    # net = E_kan.KAN([opt.input_nc, 1437, 1437, 1437, opt.output_nc], grid_size=15, spline_order=2)
+    # net = SymbolicKAN(layers_hidden=[opt.input_nc, 524, 524, 524, opt.output_nc], elementary_functions=opt.elementary_functions)
+    # net = SymbolicKAN(layers_hidden=[opt.input_nc, 1075, 1075, 1075, opt.output_nc], elementary_functions=opt.elementary_functions)
+    net = SymbolicKAN(layers_hidden=[opt.input_nc, 1437, 1437, 1437, opt.output_nc], elementary_functions=opt.elementary_functions)
 
     # 总参数（原逻辑）
     total_param = sum(p.numel() for p in net.parameters())
