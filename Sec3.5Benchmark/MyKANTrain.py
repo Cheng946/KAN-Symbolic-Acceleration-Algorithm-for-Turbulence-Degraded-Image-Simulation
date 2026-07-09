@@ -7,7 +7,7 @@ import Attention_Model as Attention
 import ResFC_Model as ResFC
 import torch
 import torch.nn as nn
-import MyKANnetLoader  # 适配HDF5和分布式的数据集加载器
+import MyKANnetLoader_2  # 适配HDF5和分布式的数据集加载器
 import argparse
 import time
 import numpy as np
@@ -335,15 +335,35 @@ def parse_args():
     # parser.add_argument('--SaveLastPara', type=str,
     #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-524-524-524.pt")
 
+    # # 保存路径（确保主进程有写入权限）
+    # parser.add_argument('--SaveTrainLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-564-564-564.txt")
+    # parser.add_argument('--SaveValLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-564-564-564.txt")
+    # parser.add_argument('--SavePara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-564-564-564.pt")
+    # parser.add_argument('--SaveLastPara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-564-564-564.pt")
+
+    # # 保存路径（确保主进程有写入权限）
+    # parser.add_argument('--SaveTrainLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-1128-1128-1128.txt")
+    # parser.add_argument('--SaveValLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-1128-1128-1128.txt")
+    # parser.add_argument('--SavePara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-1128-1128-1128.pt")
+    # parser.add_argument('--SaveLastPara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-1128-1128-1128.pt")
+
     # 保存路径（确保主进程有写入权限）
     parser.add_argument('--SaveTrainLossPath', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-564-564-564.txt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_train_loss_1_fold-1500-1500-1500.txt")
     parser.add_argument('--SaveValLossPath', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-564-564-564.txt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/record_val_loss_1_fold-1500-1500-1500.txt")
     parser.add_argument('--SavePara', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-564-564-564.pt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Kan_Para_1_fold-1500-1500-1500.pt")
     parser.add_argument('--SaveLastPara', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-564-564-564.pt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16AttentionParam/Last_Kan_Para_1_fold-1500-1500-1500.pt")
 
 
     parser.add_argument('--num_print', type=int, default=10, help='每num_print步打印一次损失')
@@ -378,7 +398,9 @@ def main():
     # net = Siren.Siren([opt.input_nc, 524, 524, 524, opt.output_nc],omega_0=15)
     # net = Siren.Siren([opt.input_nc, 2375, 2375, 2375, opt.output_nc],omega_0=15)
     # net = Attention.Attention([opt.input_nc, 524, 524, 524, opt.output_nc], heads=4, dropout=0.0)
-    net = Attention.Attention([opt.input_nc, 564, 564, 564, opt.output_nc], heads=4, dropout=0.0)
+    # net = Attention.Attention([opt.input_nc, 564, 564, 564, opt.output_nc], heads=4, dropout=0.0)
+    # net = Attention.Attention([opt.input_nc, 1128, 1128, 1128, opt.output_nc], heads=4, dropout=0.0)
+    net = Attention.Attention([opt.input_nc, 1500, 1500, 1500, opt.output_nc], heads=4, dropout=0.0)
 
     print(net)
     # 总参数（原逻辑）
@@ -406,7 +428,7 @@ def main():
         print(f"模型总参数: {sum(p.numel() for p in net.parameters())}")
 
     # 返回的是三个数据加载器
-    train_iter, test_iter, val_iter = MyKANnetLoader.load_dataset(opt)
+    train_iter, val_iter, test_iter= MyKANnetLoader_2.load_dataset(opt)
 
     # 定义损失函数和优化器（移动到设备）
     criterion = torch.nn.L1Loss().to(device)
