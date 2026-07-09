@@ -28,8 +28,8 @@ SUPPORTED_ELEMENTARY_FUNCTIONS = {
 }
 
 # 默认初等函数集合（可根据需求调整）
+# DEFAULT_ELEMENTARY_FUNCTIONS = ['identity','square','sin','cos','abs','tanh']
 DEFAULT_ELEMENTARY_FUNCTIONS = ['silu', 'relu', 'tanh', 'sigmoid', 'abs', 'identity']
-
 
 # ========== 2. SymbolicKAN 定义（核心修改：初等函数选择优化） ==========
 class SymbolicKANLinear(torch.nn.Module):
@@ -404,9 +404,18 @@ def SaveLoss(Path, Lossmean):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--Resume', type=bool, default=False, help='是否从中断的状态训练')
+    # parser.add_argument('--pruned_kan_ckpt', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_PruneParam/Pruned_Kan_Para_1_fold_4L_-524-524-524_15_2.pt",
+    #                     help='剪枝后KAN权重路径')
+
+    # parser.add_argument('--pruned_kan_ckpt', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_PruneParam/Pruned_Kan_Para_1_fold_4L_-1075-1075-1075_15_2.pt",
+    #                     help='剪枝后KAN权重路径')
+
     parser.add_argument('--pruned_kan_ckpt', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_PruneParam/Pruned_Kan_Para_1_fold_4L_-524-524-524_15_2.pt",
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_PruneParam/Pruned_Kan_Para_1_fold_4L_-1437-1437-1437_15_2.pt",
                         help='剪枝后KAN权重路径')
+
     parser.add_argument('--elementary_functions', type=str, nargs='+',
                         default=DEFAULT_ELEMENTARY_FUNCTIONS,  # 修改：使用统一的默认值
                         help=f'初等函数列表，支持的函数: {list(SUPPORTED_ELEMENTARY_FUNCTIONS.keys())}')
@@ -419,17 +428,37 @@ def parse_args():
     parser.add_argument('--output_nc', type=int, default=70, help='输出特征维度')
     parser.add_argument('--batchSize', type=int, default=10240, help='单进程批次大小')
     parser.add_argument('--learn_rate', type=float, default=5e-3, help='初始学习率')
-    parser.add_argument('--num_epochs', type=int, default=300, help='训练轮数')
+    parser.add_argument('--num_epochs', type=int, default=150, help='训练轮数')
 
     # 保存路径（使用你原有的路径）
     parser.add_argument('--SaveTrainLossPath', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_train_loss_1_fold_4L_-524-524-524_15_2.txt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_train_loss_Silu_1_fold_4L_-524-524-524_15_2.txt")
     parser.add_argument('--SaveValLossPath', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_val_loss_1_fold_4L_-524-524-524_15_2.txt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_val_loss_Silu_1_fold_4L_-524-524-524_15_2.txt")
     parser.add_argument('--SavePara', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/SymbolicKAN_Para_1_fold_4L_-524-524-524_15_2.pt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/SymbolicKAN_Para_Silu_1_fold_4L_-524-524-524_15_2.pt")
     parser.add_argument('--SaveLastPara', type=str,
-                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_1_fold_4L_-524-524-524_15_2.pt")
+                        default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_Silu_1_fold_4L_-524-524-524_15_2.pt")
+
+    # # 保存路径（使用你原有的路径）
+    # parser.add_argument('--SaveTrainLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_train_loss_Silu_1_fold_4L_-1075-1075-1075_15_2.txt")
+    # parser.add_argument('--SaveValLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_val_loss_Silu_1_fold_4L_-1075-1075-1075_15_2.txt")
+    # parser.add_argument('--SavePara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/SymbolicKAN_Para_Silu_1_fold_4L_-1075-1075-1075_15_2.pt")
+    # parser.add_argument('--SaveLastPara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_Silu_1_fold_4L_-1075-1075-1075_15_2.pt")
+
+    # # 保存路径（使用你原有的路径）
+    # parser.add_argument('--SaveTrainLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_train_loss_Silu_1_fold_4L_-1437-1437-1437_15_2.txt")
+    # parser.add_argument('--SaveValLossPath', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/record_val_loss_Silu_1_fold_4L_-1437-1437-1437_15_2.txt")
+    # parser.add_argument('--SavePara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/SymbolicKAN_Para_Silu_1_fold_4L_-1437-1437-1437_15_2.pt")
+    # parser.add_argument('--SaveLastPara', type=str,
+    #                     default="/home/aiofm/PycharmProjects/MyKANNet/15e-16_KAN_Symbolic_FinetuneParam/Last_SymbolicKAN_Para_Silu_1_fold_4L_-1437-1437-1437_15_2.pt")
 
     parser.add_argument('--num_print', type=int, default=10, help='每num_print步打印一次损失')
     parser.add_argument("--local_rank", default=os.getenv('LOCAL_RANK', -1), type=int)
@@ -457,6 +486,8 @@ def main():
 
     # 初始化SymbolicKAN（新结构）
     layers_hidden = [opt.input_nc, 524, 524, 524, opt.output_nc]
+    # layers_hidden = [opt.input_nc, 1075, 1075, 1075, opt.output_nc]
+    # layers_hidden = [opt.input_nc, 1437, 1437, 1437, opt.output_nc]
     net = SymbolicKAN(
         layers_hidden=layers_hidden,
         elementary_functions=opt.elementary_functions
@@ -493,8 +524,8 @@ def main():
         print(f"可训练参数: {trainable_params:,}")
 
     # 加载数据集（原有逻辑）
-    import MyKANnetLoader  # 你的数据集加载器
-    train_iter, test_iter, val_iter = MyKANnetLoader.load_dataset(opt)
+    import MyKANnetLoader_2  # 你的数据集加载器
+    train_iter, val_iter, test_iter= MyKANnetLoader_2.load_dataset(opt)
 
     # 定义损失函数和优化器（仅优化可训练参数）
     criterion = torch.nn.L1Loss().to(device)
