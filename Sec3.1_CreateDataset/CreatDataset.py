@@ -895,7 +895,7 @@ if __name__ == "__main__":
     input_source = '/media/aiofm/F/20250723_k-fold-cross-validation-KAN/10^7DataSet/10^7_aj_compressed.npz'
     output_batch_template = '/media/aiofm/F/20250723_k-fold-cross-validation-KAN/10^7DataSet/10^7_PCA70_coff_compressed_batch_{}.npz'
     samples_per_batch = 200000  # 每批样本数，Batch size
-    total_samples = 5000000  # 前500万样本，First 5 million samples
+    total_samples = 50000000  # 前5000万样本，First 5 billion samples
     total_batches = 25  # 1-25号输出文件，Output files 1 to 25
 
     # K折参数，K-fold parameters
